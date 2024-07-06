@@ -1,0 +1,158 @@
+version: "2"
+fields:
+  - id: privateKeySource
+    target:
+      type: environment
+      name: PRIVATE_KEY_SOURCE
+      service: streamr
+    title: Private key source
+    description: >-
+      Do you want to generate a new Ethereum private key or import an existing one?
+    enum:
+      - Generate
+      - Import
+    required: true
+  - id: privateKey
+    target:
+      type: environment
+      name: PRIVATE_KEY
+      service: streamr
+    title: Private key
+    description: >-
+      Please provide the private key to import
+    secret: true
+    pattern: "^0x[a-fA-F0-9]{64}$"
+    patternErrorMessage: Invalid private key provided.
+    required: true
+    if: { "privateKeySource": { "enum": ["Import"] } }
+
+  - id: network
+    target:
+      type: environment
+      name: NETWORK
+      service: streamr
+    title: Network
+    description: >-
+      Which network do you want to configure your node to connect to?
+    enum:
+      - Streamr 1.0 mainnet + Polygon
+      - Streamr 1.0 testnet + Polygon Amoy testnet
+    required: true
+
+  - id: setupOperator
+    target:
+      type: environment
+      name: SETUP_OPERATOR
+      service: streamr
+    title: Setup operator
+    description: >-
+      Do you wish to participate in earning rewards by staking on stream Sponsorships?
+    enum:
+      - Yes
+      - No
+    required: true
+  - id: operator
+    target:
+      type: environment
+      name: OPERATOR
+      service: streamr
+    title: Operator
+    description: >-
+      Enter your Operator address:
+    pattern: "^0x[a-fA-F0-9]{40}$"
+    patternErrorMessage: Invalid ethereum address
+    required: true
+    if: { "setupOperator": { "enum": ["Yes"] } }
+
+  - id: pubsubPlugins
+    target:
+      type: environment
+      name: PUBSUB_PLUGINS
+      service: streamr
+    title: Pub/sub plugins
+    description: >-
+      Do you wish to use your node for data publishing/subscribing?
+    enum:
+      - Yes
+      - No
+    required: true
+    if: { "setupOperator": { "enum": ["Yes"] } }
+
+  - id: websocketPlugin
+    target:
+      type: environment
+      name: WEBSOCKET_PLUGIN
+      service: streamr
+    title: WebSocket plugin
+    description: >-
+      Do you wish to enable WebSocket plugin?
+    enum:
+      - Yes
+      - No
+    required: true
+    if: { "pubsubPlugins": { "enum": ["Yes"] } }
+  - id: websocketPort
+    target:
+      type: portMapping
+      containerPort: 7170/TCP
+      service: streamr
+    title: WebSocket port
+    description: >-
+      Provide a port for the WebSocket plugin
+    pattern: ^(102[4-9]|10[3-9][0-9]|1[1-9][0-9]{2}|[2-9][0-9]{3}|[1-3][0-9]{4}|4[0-8][0-9]{3}|49[0-9]{2}|490[0-9]|491[0-4]|49150|49151)$
+    patternErrorMessage: Invalid port (1024 - 49151)
+    required: true
+    if: { "websocketPlugin": { "enum": ["Yes"] } }
+
+  - id: mqttPlugin
+    target:
+      type: environment
+      name: MQTT_PLUGIN
+      service: streamr
+    title: MQTT plugin
+    description: >-
+      Do you wish to enable MQTT plugin?
+    enum:
+      - Yes
+      - No
+    required: true
+    if: { "pubsubPlugins": { "enum": ["Yes"] } }
+  - id: mqttPort
+    target:
+      type: portMapping
+      containerPort: 1883/TCP
+      service: streamr
+    title: MQTT port
+    description: >-
+      Provide a port for the MQTT plugin
+    pattern: ^(102[4-9]|10[3-9][0-9]|1[1-9][0-9]{2}|[2-9][0-9]{3}|[1-3][0-9]{4}|4[0-8][0-9]{3}|49[0-9]{2}|490[0-9]|491[0-4]|49150|49151)$
+    patternErrorMessage: Invalid port (1024 - 49151)
+    required: true
+    if: { "mqttPlugin": { "enum": ["Yes"] } }
+
+  - id: httpPlugin
+    target:
+      type: environment
+      name: HTTP_PLUGIN
+      service: streamr
+    title: HTTP plugin
+    description: >-
+      Do you wish to enable HTTP plugin?
+    enum:
+      - Yes
+      - No
+    required: true
+    if: { "pubsubPlugins": { "enum": ["Yes"] } }
+  - id: httpPort
+    target:
+      type: portMapping
+      containerPort: 7171/TCP
+      service: streamr
+    title: HTTP port
+    description: >-
+      Provide a port for the HTTP plugin
+    pattern: ^(102[4-9]|10[3-9][0-9]|1[1-9][0-9]{2}|[2-9][0-9]{3}|[1-3][0-9]{4}|4[0-8][0-9]{3}|49[0-9]{2}|490[0-9]|491[0-4]|49150|49151)$
+    patternErrorMessage: Invalid port (1024 - 49151)
+    required: true
+    if: { "httpPlugin": { "enum": ["Yes"] } }
+    # generate apiKey in entrypoint: https://github.com/streamr-dev/network/blob/d39f4fcdc31dedfb2c4b2ec193ad73307a7db7b4/packages/node/src/config/ConfigWizard.ts#L69

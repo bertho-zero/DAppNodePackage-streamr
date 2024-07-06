@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  streamr:
+    image: streamr.streamr.public.dappnode.eth:0.1.0
+    build:
+      context: streamr
+      args:
+        UPSTREAM_VERSION: v100.2.4
+    restart: unless-stopped
+    volumes:
+      - streamr-config-vol:/home/streamr/.streamr
+    environment:
+      PRIVATE_KEY_SOURCE: Generate
+      PRIVATE_KEY: null
+      NETWORK: Streamr 1.0 mainnet + Polygon
+      SETUP_OPERATOR: Yes
+      OPERATOR: null
+      PUBSUB_PLUGINS: null
+      WEBSOCKET_PLUGIN: null
+      MQTT_PLUGIN: null
+      HTTP_PLUGIN: null
+    ports:
+      - "32200:32200"
+      - "7170:7170/tcp"
+      - "1883:1883/tcp"
+      - "7171:7171/tcp"
+volumes:
+  streamr-config-vol: {}

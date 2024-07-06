@@ -1,0 +1,39 @@
+{
+  "name": "streamr.public.dappnode.eth",
+  "upstreamVersion": "v100.2.4",
+  "upstreamRepo": "streamr/node",
+  "upstreamArg": "UPSTREAM_VERSION",
+  "version": "0.1.0",
+  "shortDescription": "The decentralized P2P real-time data pub/sub network.",
+  "description": "Streamr is a decentralized data streaming protocol designed for real-time data sharing and monetization.\n\nIt provides a robust platform for various participants:\n\n- **Data Publishers** can stream real-time data to the network, enabling immediate data dissemination.\n- **Data Subscribers** can access and consume the real-time data streams provided by publishers, ensuring they receive the latest information instantly.\n- **Node Operators** maintain the network's integrity and functionality by relaying data streams, thus earning rewards for their contribution.\n\nStreamr leverages the power of blockchain to ensure data integrity and security, offering a transparent and reliable solution for real-time data needs.\n\nStreamr's native token, DATA, is used for transactions within the network, ensuring efficient and seamless exchanges between participants. The protocol's decentralized nature ensures there is no single point of failure, making it a highly resilient and scalable solution for real-time data streaming.",
+  "type": "service",
+  "mainService": "streamr",
+  "exposable": [
+    {
+      "name": "P2P communication",
+      "serviceName": "streamr",
+      "port": 32200
+    }
+  ],
+  "author": "Bertho",
+  "categories": ["Developer tools", "Blockchain"],
+  "keywords": [
+    "protocol",
+    "peer-to-peer",
+    "decentralized",
+    "pubsub",
+    "streamr",
+    "streamr-client"
+  ],
+  "links": {
+    "homepage": "https://streamr.network/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bertho-zero/DAppNodePackage-streamr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bertho-zero/DAppNodePackage-streamr/issues"
+  },
+  "license": "GPL-3.0"
+}
