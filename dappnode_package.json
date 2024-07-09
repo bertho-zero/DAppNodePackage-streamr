@@ -1,9 +1,9 @@
 {
   "name": "streamr.public.dappnode.eth",
-  "upstreamVersion": "v100.2.4",
+  "upstreamVersion": "v101.0.1",
   "upstreamRepo": "streamr-dev/network",
   "upstreamArg": "UPSTREAM_VERSION",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "shortDescription": "The decentralized P2P real-time data pub/sub network.",
   "description": "Streamr is a decentralized data streaming protocol designed for real-time data sharing and monetization.\n\nIt provides a robust platform for various participants:\n\n- **Data Publishers** can stream real-time data to the network, enabling immediate data dissemination.\n- **Data Subscribers** can access and consume the real-time data streams provided by publishers, ensuring they receive the latest information instantly.\n- **Node Operators** maintain the network's integrity and functionality by relaying data streams, thus earning rewards for their contribution.\n\nStreamr leverages the power of blockchain to ensure data integrity and security, offering a transparent and reliable solution for real-time data needs.\n\nStreamr's native token, DATA, is used for transactions within the network, ensuring efficient and seamless exchanges between participants. The protocol's decentralized nature ensures there is no single point of failure, making it a highly resilient and scalable solution for real-time data streaming.",
   "type": "service",

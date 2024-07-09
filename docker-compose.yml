@@ -5,7 +5,7 @@ services:
     build:
       context: streamr
       args:
-        UPSTREAM_VERSION: v100.2.4
+        UPSTREAM_VERSION: v101.0.1
     restart: unless-stopped
     volumes:
       - streamr-config-vol:/home/streamr/.streamr
@@ -13,7 +13,7 @@ services:
       PRIVATE_KEY_SOURCE: Generate
       PRIVATE_KEY: null
       NETWORK: Streamr 1.0 mainnet + Polygon
-      SETUP_OPERATOR: Yes
+      SETUP_OPERATOR: "Yes"
       OPERATOR: null
       PUBSUB_PLUGINS: null
       WEBSOCKET_PLUGIN: null
@@ -21,8 +21,8 @@ services:
       HTTP_PLUGIN: null
     ports:
       - "32200:32200"
-      - "7170:7170/tcp"
-      - "1883:1883/tcp"
-      - "7171:7171/tcp"
+      - 7170:7170/tcp
+      - 1883:1883/tcp
+      - 7171:7171/tcp
 volumes:
   streamr-config-vol: {}
