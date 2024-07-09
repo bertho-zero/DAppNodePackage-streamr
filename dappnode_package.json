@@ -1,7 +1,7 @@
 {
   "name": "streamr.public.dappnode.eth",
   "upstreamVersion": "v100.2.4",
-  "upstreamRepo": "streamr/node",
+  "upstreamRepo": "streamr-dev/network",
   "upstreamArg": "UPSTREAM_VERSION",
   "version": "0.1.0",
   "shortDescription": "The decentralized P2P real-time data pub/sub network.",
